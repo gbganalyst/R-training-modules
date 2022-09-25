@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>004-lookupreference-functions</title>
+    </head>
+    <body>
+
+        <div style="background-color:#ffffaa" align = "center">
+            <script>
+                var c = '';
+                var opt = '';
+                var n = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+                var quiz = {"count": 3, "next": null, "previous": null, "results": [{"_class": "assessment", "id": 974038, "assessment_type": "multiple-choice", "created": "2016-07-02T17:16:15Z", "prompt": {"relatedLectureIds": ["3429222"], "feedbacks": ["", "", "", ""], "answers": ["<p>It allows you to dynamically change the lookup array</p>", "<p>It dynamically retrieves data based on the column header</p>", "<p>It allows you to return multiple lookup values</p>", "<p>It allows you to search for close variants of the lookup value</p>"], "question": "<p>What purpose does MATCH serve within a VLOOKUP formula?</p>"}, "correct_response": ["b"], "updated": "2016-07-02T17:16:15Z", "section": "", "question_plain": "What purpose does MATCH serve within a VLOOKUP formula?", "related_lectures": [{"_class": "lecture", "id": 3429222, "title": "Combining MATCH with VLOOKUP", "created": "2015-08-12T01:52:49Z", "asset": {"_class": "asset", "id": 3939384, "asset_type": "Video", "title": "S5L11.mp4", "created": "2015-08-17T00:38:52Z"}, "object_index": 40, "url": "/excel-for-analysts/learn/v4/t/lecture/3429222"}], "original_assessment_id": 0}, {"_class": "assessment", "id": 974040, "assessment_type": "multiple-choice", "created": "2016-07-02T17:31:36Z", "prompt": {"relatedLectureIds": ["3429226"], "feedbacks": ["", "", "", ""], "answers": ["<p>INDEX</p>", "<p>LOOKUP</p>", "<p>MATCH</p>", "<p>OFFSET</p>"], "question": "<p>Which of the following functions can return an array with a specified height and width?</p>"}, "correct_response": ["d"], "updated": "2016-07-02T17:31:36Z", "section": "", "question_plain": "Which of the following functions can return an array with a specified height and width?", "related_lectures": [{"_class": "lecture", "id": 3429226, "title": "The OFFSET Function", "created": "2015-08-12T01:53:03Z", "asset": {"_class": "asset", "id": 3939392, "asset_type": "Video", "title": "S5L12.mp4", "created": "2015-08-17T00:41:18Z"}, "object_index": 42, "url": "/excel-for-analysts/learn/v4/t/lecture/3429226"}], "original_assessment_id": 0}, {"_class": "assessment", "id": 974044, "assessment_type": "multiple-choice", "created": "2016-07-02T17:38:30Z", "prompt": {"relatedLectureIds": ["3429214"], "feedbacks": ["", "", "", ""], "answers": ["<p>When you have row headers instead of column headers</p>", "<p>When you want to search horizontally across columns for your lookup value</p>", "<p>When you have a vertical table (with column headers) that has been transposed horizontally</p>", "<p>All of the above</p>"], "question": "<p>When would you use an HLOOKUP function instead of VLOOKUP?</p>"}, "correct_response": ["d"], "updated": "2016-07-02T17:38:30Z", "section": "", "question_plain": "When would you use an HLOOKUP function instead of VLOOKUP?", "related_lectures": [{"_class": "lecture", "id": 3429214, "title": "VLOOKUP/HLOOKUP", "created": "2015-08-12T01:51:57Z", "asset": {"_class": "asset", "id": 3928966, "asset_type": "Video", "title": "S5L3.mp4", "created": "2015-08-14T21:25:33Z"}, "object_index": 33, "url": "/excel-for-analysts/learn/v4/t/lecture/3429214"}], "original_assessment_id": 0}]};
+
+                for (var i = 0; i < quiz.results.length; i++) {
+
+                    var question = '<font color="ff0000"><br><h3>Question-' + i + ': </h3> <b>' + quiz.results[i].prompt.question + '</b> <br>';
+
+                    for (var j = 0; j < quiz.results[i].prompt.answers.length; j++) {
+
+                        opt = opt.concat(quiz.results[i].prompt.answers[j] ? '<p style="cursor: pointer" onclick="this.style=\'font-weight: bold; color: #CE534D\'">' + n[j] + ': ' + quiz.results[i].prompt.answers[j].toString().replace(/,/g, '<br>') + '</p>' : '<br>');
+                    }
+                    var ans = quiz.results[i].correct_response ? '<p> <br> <input style="cursor: pointer" type="button" onclick="this.value=\'Answer is: ' + quiz.results[i].correct_response.toString() + '\'" value="Show Answer"></input> </p>' : '<br>';
+                    c = c.concat(question, opt, ans);
+                    opt = ''
+                    }
+                document.write(c);
+            </script>
+        </div>
+    </body>
+    </html>

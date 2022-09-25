@@ -1,0 +1,18 @@
+[submodule "R-Programming-Fundamental"]
+	path = R-Programming-Fundamental
+	url = https://github.com/gbganalyst/R-Programming-Fundamental
+[submodule "R-packages-R-project"]
+	path = R-packages-R-project
+	url = https://github.com/gbganalyst/R-packages-R-project
+[submodule "rmarkdown"]
+	path = rmarkdown
+	url = https://github.com/gbganalyst/rmarkdown
+[submodule "Data-Analysis-Visualization"]
+	path = Data-Analysis-Visualization
+	url = https://github.com/gbganalyst/Data-Analysis-Visualization
+[submodule "R-Modules-Overview"]
+	path = R-Modules-Overview
+	url = https://github.com/gbganalyst/R-Modules-Overview
+[submodule "web-scraping-using-ralger"]
+	path = web-scraping-using-ralger
+	url = https://github.com/gbganalyst/web-scraping-using-ralger

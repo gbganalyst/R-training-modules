@@ -1,0 +1,3 @@
+# R-training-modules
+
+This repository contains series of modules to help you learn R programming without stress. It assumes that you are a beginner and are happy to learn R for data science-related projects. The material is sufficient and carefully arranged in a structured manner. There are a lot of quizzes and self-review questions for each module to help you remember what you have learnt and at the end, there is a capstone project to build a portfolio using R for data science.

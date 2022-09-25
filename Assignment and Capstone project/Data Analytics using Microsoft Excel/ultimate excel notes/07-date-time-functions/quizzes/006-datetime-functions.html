@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>006-datetime-functions</title>
+    </head>
+    <body>
+
+        <div style="background-color:#ffffaa" align = "center">
+            <script>
+                var c = '';
+                var opt = '';
+                var n = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+                var quiz = {"count": 3, "next": null, "previous": null, "results": [{"_class": "assessment", "id": 974054, "assessment_type": "multiple-choice", "created": "2016-07-02T17:53:57Z", "prompt": {"question": "<p>What does the DATEVALUE represent in Excel?</p>", "relatedLectureIds": ["3462640"], "feedbacks": ["", "", "", ""], "answers": ["<p>The sum of the current day, month, and year</p>", "<p>The current time of the current day</p>", "<p>The number of days since 1/1/1900</p>", "<p>The number of days since the first day of the current year </p>"]}, "correct_response": ["c"], "updated": "2016-07-02T17:53:57Z", "section": "", "question_plain": "What does the DATEVALUE represent in Excel?", "related_lectures": [{"_class": "lecture", "id": 3462640, "title": "DATEVALUE: Your New BFF", "created": "2015-08-18T14:51:34Z", "asset": {"_class": "asset", "id": 3953142, "asset_type": "Video", "title": "S7L2.mp4", "created": "2015-08-18T21:26:41Z"}, "object_index": 57, "url": "/excel-for-analysts/learn/v4/t/lecture/3462640"}], "original_assessment_id": 0}, {"_class": "assessment", "id": 974060, "assessment_type": "multiple-choice", "created": "2016-07-02T18:01:19Z", "prompt": {"question": "<p>Which function is commonly used to calculate the first or last date of a given month?</p>", "relatedLectureIds": ["3429368"], "feedbacks": ["", "", "", ""], "answers": ["<p>EOMONTH</p>", "<p>DATEDIF</p>", "<p>YEARFRAC</p>", "<p>MONTH</p>"]}, "correct_response": ["a"], "updated": "2016-07-02T18:01:19Z", "section": "", "question_plain": "Which function is commonly used to calculate the first or last date of a given month?", "related_lectures": [{"_class": "lecture", "id": 3429368, "title": "The EOMONTH Function", "created": "2015-08-12T02:32:08Z", "asset": {"_class": "asset", "id": 3953144, "asset_type": "Video", "title": "S7L6.mp4", "created": "2015-08-18T21:26:41Z"}, "object_index": 61, "url": "/excel-for-analysts/learn/v4/t/lecture/3429368"}], "original_assessment_id": 0}, {"_class": "assessment", "id": 974066, "assessment_type": "multiple-choice", "created": "2016-07-02T18:05:42Z", "prompt": {"question": "<p>By default, a WEEKDAY value of 1 represents which day of the week?</p>", "relatedLectureIds": ["3429370"], "feedbacks": ["", "", "", ""], "answers": ["<p>Saturday</p>", "<p>Sunday</p>", "<p>Monday</p>", "<p>Tuesday</p>"]}, "correct_response": ["b"], "updated": "2016-07-02T18:05:42Z", "section": "", "question_plain": "By default, a WEEKDAY value of 1 represents which day of the week?", "related_lectures": [{"_class": "lecture", "id": 3429370, "title": "WEEKDAY, WORKDAY & NETWORKDAYS", "created": "2015-08-12T02:32:32Z", "asset": {"_class": "asset", "id": 3953148, "asset_type": "Video", "title": "S7L8.mp4", "created": "2015-08-18T21:27:03Z"}, "object_index": 63, "url": "/excel-for-analysts/learn/v4/t/lecture/3429370"}], "original_assessment_id": 0}]};
+
+                for (var i = 0; i < quiz.results.length; i++) {
+
+                    var question = '<font color="ff0000"><br><h3>Question-' + i + ': </h3> <b>' + quiz.results[i].prompt.question + '</b> <br>';
+
+                    for (var j = 0; j < quiz.results[i].prompt.answers.length; j++) {
+
+                        opt = opt.concat(quiz.results[i].prompt.answers[j] ? '<p style="cursor: pointer" onclick="this.style=\'font-weight: bold; color: #CE534D\'">' + n[j] + ': ' + quiz.results[i].prompt.answers[j].toString().replace(/,/g, '<br>') + '</p>' : '<br>');
+                    }
+                    var ans = quiz.results[i].correct_response ? '<p> <br> <input style="cursor: pointer" type="button" onclick="this.value=\'Answer is: ' + quiz.results[i].correct_response.toString() + '\'" value="Show Answer"></input> </p>' : '<br>';
+                    c = c.concat(question, opt, ans);
+                    opt = ''
+                    }
+                document.write(c);
+            </script>
+        </div>
+    </body>
+    </html>

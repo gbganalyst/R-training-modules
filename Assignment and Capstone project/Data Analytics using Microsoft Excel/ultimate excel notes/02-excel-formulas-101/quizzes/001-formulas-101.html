@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>001-formulas-101</title>
+    </head>
+    <body>
+
+        <div style="background-color:#ffffaa" align = "center">
+            <script>
+                var c = '';
+                var opt = '';
+                var n = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+                var quiz = {"count": 3, "next": null, "previous": null, "results": [{"_class": "assessment", "id": 973952, "assessment_type": "multiple-choice", "created": "2016-07-02T15:15:12Z", "prompt": {"feedbacks": ["", "", "", ""], "answers": ["<p>$A$1</p>", "<p>A1</p>", "<p>A$1</p>", "<p>$A1</p>"], "question": "<p>Which of the following cell references includes a fixed row and relative column?</p>", "relatedLectureIds": ["3373754"]}, "correct_response": ["c"], "updated": "2016-07-02T15:15:12Z", "section": "", "question_plain": "Which of the following cell references includes a fixed row and relative column?", "related_lectures": [{"_class": "lecture", "id": 3373754, "title": "Fixed, Relative, & Mixed References", "created": "2015-08-01T20:59:49Z", "asset": {"_class": "asset", "id": 3892708, "asset_type": "Video", "title": "S2L5_v2.mp4", "created": "2015-08-09T14:18:45Z"}, "object_index": 7, "url": "/excel-for-analysts/learn/v4/t/lecture/3373754"}], "original_assessment_id": 0}, {"_class": "assessment", "id": 973958, "assessment_type": "multiple-choice", "created": "2016-07-02T15:16:14Z", "prompt": {"answers": ["<p>ALT-H-V-V</p>", "<p>CTRL-V-V</p>", "<p>ALT-V-V</p>", "<p>CTRL-ALT-V</p>"], "feedbacks": ["", "", "", ""], "question": "<p>Which shortcut can be used to paste data as values?</p>", "relatedLectureIds": ["3410904"]}, "correct_response": ["a"], "updated": "2016-07-02T15:16:14Z", "section": "", "question_plain": "Which shortcut can be used to paste data as values?", "related_lectures": [{"_class": "lecture", "id": 3410904, "title": "Function, CTRL & ALT Shortcuts", "created": "2015-08-08T22:05:25Z", "asset": {"_class": "asset", "id": 3892740, "asset_type": "Video", "title": "S2L7_v2.mp4", "created": "2015-08-09T14:23:42Z"}, "object_index": 9, "url": "/excel-for-analysts/learn/v4/t/lecture/3410904"}], "original_assessment_id": 0}, {"_class": "assessment", "id": 973962, "assessment_type": "multiple-choice", "created": "2016-07-02T15:26:48Z", "prompt": {"feedbacks": ["", "", "", ""], "answers": ["<p>TODAY</p>", "<p>NOW</p>", "<p>INDEX</p>", "<p>RAND</p>"], "question": "<p>Which of the following is NOT a volatile function?</p>", "relatedLectureIds": ["3427092"]}, "correct_response": ["c"], "updated": "2016-07-02T15:26:48Z", "section": "", "question_plain": "Which of the following is NOT a volatile function?", "related_lectures": [{"_class": "lecture", "id": 3427092, "title": "Fixed vs. Volatile Functions", "created": "2015-08-11T18:27:29Z", "asset": {"_class": "asset", "id": 3907602, "asset_type": "Video", "title": "S2L9_v3.mp4", "created": "2015-08-11T19:16:13Z"}, "object_index": 12, "url": "/excel-for-analysts/learn/v4/t/lecture/3427092"}], "original_assessment_id": 0}]};
+
+                for (var i = 0; i < quiz.results.length; i++) {
+
+                    var question = '<font color="ff0000"><br><h3>Question-' + i + ': </h3> <b>' + quiz.results[i].prompt.question + '</b> <br>';
+
+                    for (var j = 0; j < quiz.results[i].prompt.answers.length; j++) {
+
+                        opt = opt.concat(quiz.results[i].prompt.answers[j] ? '<p style="cursor: pointer" onclick="this.style=\'font-weight: bold; color: #CE534D\'">' + n[j] + ': ' + quiz.results[i].prompt.answers[j].toString().replace(/,/g, '<br>') + '</p>' : '<br>');
+                    }
+                    var ans = quiz.results[i].correct_response ? '<p> <br> <input style="cursor: pointer" type="button" onclick="this.value=\'Answer is: ' + quiz.results[i].correct_response.toString() + '\'" value="Show Answer"></input> </p>' : '<br>';
+                    c = c.concat(question, opt, ans);
+                    opt = ''
+                    }
+                document.write(c);
+            </script>
+        </div>
+    </body>
+    </html>

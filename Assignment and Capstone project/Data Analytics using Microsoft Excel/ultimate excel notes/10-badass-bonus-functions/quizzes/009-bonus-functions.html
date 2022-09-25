@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>009-bonus-functions</title>
+    </head>
+    <body>
+
+        <div style="background-color:#ffffaa" align = "center">
+            <script>
+                var c = '';
+                var opt = '';
+                var n = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+                var quiz = {"count": 3, "next": null, "previous": null, "results": [{"_class": "assessment", "id": 974094, "assessment_type": "multiple-choice", "created": "2016-07-02T18:24:21Z", "prompt": {"question": "<p>Which function could you use to drive users to a given workbook location or URL?</p>", "relatedLectureIds": ["3429550"], "answers": ["<p>WEBSERVICE</p>", "<p>HYPERLINK</p>", "<p>URL</p>", "<p>WEBLINK</p>"], "feedbacks": ["", "", "", ""]}, "correct_response": ["b"], "updated": "2016-07-02T18:24:21Z", "section": "", "question_plain": "Which function could you use to drive users to a given workbook location or URL?", "related_lectures": [{"_class": "lecture", "id": 3429550, "title": "HYPERLINK: as Awesome as it Sounds", "created": "2015-08-12T03:17:37Z", "asset": {"_class": "asset", "id": 3978840, "asset_type": "Video", "title": "S10L3.mp4", "created": "2015-08-21T20:55:12Z"}, "object_index": 90, "url": "/excel-for-analysts/learn/v4/t/lecture/3429550"}], "original_assessment_id": 0}, {"_class": "assessment", "id": 974098, "assessment_type": "multiple-choice", "created": "2016-07-02T18:26:48Z", "prompt": {"question": "<p>Why might FILTERXML be used with a WEBSERVICE function?</p>", "relatedLectureIds": ["3429552"], "feedbacks": ["", "", "", ""], "answers": ["<p>It isolates elements from an XML string</p>", "<p>It returns an XML string from a web source</p>", "<p>It converts data from an API into XML format</p>", "<p>It filters non-blank XML values from a WEBSERVICE response</p>"]}, "correct_response": ["a"], "updated": "2016-07-02T18:26:48Z", "section": "", "question_plain": "Why might FILTERXML be used with a WEBSERVICE function?", "related_lectures": [{"_class": "lecture", "id": 3429552, "title": "Tapping into Real-Time Data with WEBSERVICE & FILTERXML", "created": "2015-08-12T03:18:03Z", "asset": {"_class": "asset", "id": 3978846, "asset_type": "Video", "title": "S10L4.mp4", "created": "2015-08-21T20:55:24Z"}, "object_index": 91, "url": "/excel-for-analysts/learn/v4/t/lecture/3429552"}], "original_assessment_id": 0}, {"_class": "assessment", "id": 974100, "assessment_type": "multiple-choice", "created": "2016-07-02T18:36:29Z", "prompt": {"question": "<p>Is this dog wearing a wig?</p><img src=\"https://udemy-images.s3.amazonaws.com:443/redactor/2016-07-02_18-35-25-26ef8d10c4356171a484c3d2daf69112/dog_wig.jpg\"><p><br></p>", "relatedLectureIds": "", "feedbacks": ["", ""], "answers": ["<p>Yes, it appears to be</p>", "<p>No, I don't believe so</p>"]}, "correct_response": ["a"], "updated": "2016-07-02T18:36:29Z", "section": "", "question_plain": "Is this dog wearing a wig?", "related_lectures": [], "original_assessment_id": 0}]};
+
+                for (var i = 0; i < quiz.results.length; i++) {
+
+                    var question = '<font color="ff0000"><br><h3>Question-' + i + ': </h3> <b>' + quiz.results[i].prompt.question + '</b> <br>';
+
+                    for (var j = 0; j < quiz.results[i].prompt.answers.length; j++) {
+
+                        opt = opt.concat(quiz.results[i].prompt.answers[j] ? '<p style="cursor: pointer" onclick="this.style=\'font-weight: bold; color: #CE534D\'">' + n[j] + ': ' + quiz.results[i].prompt.answers[j].toString().replace(/,/g, '<br>') + '</p>' : '<br>');
+                    }
+                    var ans = quiz.results[i].correct_response ? '<p> <br> <input style="cursor: pointer" type="button" onclick="this.value=\'Answer is: ' + quiz.results[i].correct_response.toString() + '\'" value="Show Answer"></input> </p>' : '<br>';
+                    c = c.concat(question, opt, ans);
+                    opt = ''
+                    }
+                document.write(c);
+            </script>
+        </div>
+    </body>
+    </html>

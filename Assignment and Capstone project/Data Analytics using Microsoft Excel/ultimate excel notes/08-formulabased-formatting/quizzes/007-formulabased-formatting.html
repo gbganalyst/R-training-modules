@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>007-formulabased-formatting</title>
+    </head>
+    <body>
+
+        <div style="background-color:#ffffaa" align = "center">
+            <script>
+                var c = '';
+                var opt = '';
+                var n = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+                var quiz = {"count": 3, "next": null, "previous": null, "results": [{"_class": "assessment", "id": 974072, "assessment_type": "multiple-choice", "created": "2016-07-02T18:11:01Z", "prompt": {"feedbacks": ["Make sure you know the exact syntax of the function you're using", ""], "answers": ["<p>TRUE</p>", "<p>FALSE</p>"], "relatedLectureIds": ["3429388"], "question": "<p>TRUE or FALSE: Formula tips are not available when writing formulas in the formatting rule interface</p>"}, "correct_response": ["a"], "updated": "2016-07-02T18:11:01Z", "section": "", "question_plain": "TRUE or FALSE: Formula tips are not available when writing formulas in the formatting rule interface", "related_lectures": [{"_class": "lecture", "id": 3429388, "title": "Creating, Editing & Managing Formula-Based Rules", "created": "2015-08-12T02:37:05Z", "asset": {"_class": "asset", "id": 3962608, "asset_type": "Video", "title": "S8L2.mp4", "created": "2015-08-20T03:55:41Z"}, "object_index": 68, "url": "/excel-for-analysts/learn/v4/t/lecture/3429388"}], "original_assessment_id": 0}, {"_class": "assessment", "id": 974074, "assessment_type": "multiple-choice", "created": "2016-07-02T18:13:29Z", "prompt": {"feedbacks": ["", "", "", ""], "answers": ["<p>Returns the remainder after a number is divided by a divisor</p>", "<p>Returns the MODE of a range of values</p>", "<p>Divides two numbers and rounds the resulting value</p>", "<p>Changes the calculation mode in Excel</p>"], "relatedLectureIds": ["3429392"], "question": "<p>What is the purpose of the MOD function in Excel?</p>"}, "correct_response": ["a"], "updated": "2016-07-02T18:13:29Z", "section": "", "question_plain": "What is the purpose of the MOD function in Excel?", "related_lectures": [{"_class": "lecture", "id": 3429392, "title": "Highlighting Every Other Row Using the MOD function", "created": "2015-08-12T02:37:32Z", "asset": {"_class": "asset", "id": 3962606, "asset_type": "Video", "title": "S8L3.mp4", "created": "2015-08-20T03:55:38Z"}, "object_index": 69, "url": "/excel-for-analysts/learn/v4/t/lecture/3429392"}], "original_assessment_id": 0}, {"_class": "assessment", "id": 974076, "assessment_type": "multiple-choice", "created": "2016-07-02T18:15:47Z", "prompt": {"feedbacks": ["", "Reference types are critical to make sure that your formula-based rule functions properly"], "answers": ["<p>TRUE</p>", "<p>FALSE</p>"], "relatedLectureIds": ["3429388"], "question": "<p>TRUE or FALSE: Reference types are irrelevant for formulas used in formatting rules</p>"}, "correct_response": ["b"], "updated": "2016-07-02T18:15:47Z", "section": "", "question_plain": "TRUE or FALSE: Reference types are irrelevant for formulas used in formatting rules", "related_lectures": [{"_class": "lecture", "id": 3429388, "title": "Creating, Editing & Managing Formula-Based Rules", "created": "2015-08-12T02:37:05Z", "asset": {"_class": "asset", "id": 3962608, "asset_type": "Video", "title": "S8L2.mp4", "created": "2015-08-20T03:55:41Z"}, "object_index": 68, "url": "/excel-for-analysts/learn/v4/t/lecture/3429388"}], "original_assessment_id": 0}]};
+
+                for (var i = 0; i < quiz.results.length; i++) {
+
+                    var question = '<font color="ff0000"><br><h3>Question-' + i + ': </h3> <b>' + quiz.results[i].prompt.question + '</b> <br>';
+
+                    for (var j = 0; j < quiz.results[i].prompt.answers.length; j++) {
+
+                        opt = opt.concat(quiz.results[i].prompt.answers[j] ? '<p style="cursor: pointer" onclick="this.style=\'font-weight: bold; color: #CE534D\'">' + n[j] + ': ' + quiz.results[i].prompt.answers[j].toString().replace(/,/g, '<br>') + '</p>' : '<br>');
+                    }
+                    var ans = quiz.results[i].correct_response ? '<p> <br> <input style="cursor: pointer" type="button" onclick="this.value=\'Answer is: ' + quiz.results[i].correct_response.toString() + '\'" value="Show Answer"></input> </p>' : '<br>';
+                    c = c.concat(question, opt, ans);
+                    opt = ''
+                    }
+                document.write(c);
+            </script>
+        </div>
+    </body>
+    </html>

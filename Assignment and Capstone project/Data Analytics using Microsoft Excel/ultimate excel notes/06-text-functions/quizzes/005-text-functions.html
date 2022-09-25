@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>005-text-functions</title>
+    </head>
+    <body>
+
+        <div style="background-color:#ffffaa" align = "center">
+            <script>
+                var c = '';
+                var opt = '';
+                var n = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+                var quiz = {"count": 3, "next": null, "previous": null, "results": [{"_class": "assessment", "id": 974046, "assessment_type": "multiple-choice", "created": "2016-07-02T17:40:17Z", "prompt": {"answers": ["<p>JOIN</p>", "<p>&amp;</p>", "<p>MERGE</p>", "<p>AND</p>"], "question": "<p>Which of the following is a shortcut for the CONCATENATE function?</p>", "relatedLectureIds": ["3429294"], "feedbacks": ["", "", "", ""]}, "correct_response": ["b"], "updated": "2016-07-02T17:40:17Z", "section": "", "question_plain": "Which of the following is a shortcut for the CONCATENATE function?", "related_lectures": [{"_class": "lecture", "id": 3429294, "title": "The CONCATENATE Function (&)", "created": "2015-08-12T02:18:21Z", "asset": {"_class": "asset", "id": 3940400, "asset_type": "Video", "title": "S6L3.mp4", "created": "2015-08-17T04:28:42Z"}, "object_index": 48, "url": "/excel-for-analysts/learn/v4/t/lecture/3429294"}], "original_assessment_id": 0}, {"_class": "assessment", "id": 974048, "assessment_type": "multiple-choice", "created": "2016-07-02T17:44:05Z", "prompt": {"answers": ["<p>TRUE</p>", "<p>FALSE</p>"], "question": "<p>TRUE or FALSE: Excel will automatically ignore any trailing spaces at the end of a text string</p>", "relatedLectureIds": ["3429292"], "feedbacks": ["", "Two text strings that look identical with the exception of a trailing space will be treated as two completely unique values in Excel (which is why the TRIM function is so important!)"]}, "correct_response": ["b"], "updated": "2016-07-02T17:44:05Z", "section": "", "question_plain": "TRUE or FALSE: Excel will automatically ignore any trailing spaces at the end of a text string", "related_lectures": [{"_class": "lecture", "id": 3429292, "title": "UPPER/LOWER/PROPER & TRIM", "created": "2015-08-12T02:18:09Z", "asset": {"_class": "asset", "id": 3940398, "asset_type": "Video", "title": "S6L2.mp4", "created": "2015-08-17T04:28:24Z"}, "object_index": 47, "url": "/excel-for-analysts/learn/v4/t/lecture/3429292"}], "original_assessment_id": 0}, {"_class": "assessment", "id": 974052, "assessment_type": "multiple-choice", "created": "2016-07-02T17:46:17Z", "prompt": {"answers": ["<p>FIND is case-sensitive</p>", "<p>SEARCH is case-sensitive</p>", "<p>FIND will identify values that are similar but not identical</p>", "<p>FIND will allow you to include wildcards</p>"], "question": "<p>What's the difference between the SEARCH and FIND functions in Excel?</p>", "relatedLectureIds": ["3429302"], "feedbacks": ["", "", "", ""]}, "correct_response": ["a"], "updated": "2016-07-02T17:46:17Z", "section": "", "question_plain": "What's the difference between the SEARCH and FIND functions in Excel?", "related_lectures": [{"_class": "lecture", "id": 3429302, "title": "SEARCH/FIND", "created": "2015-08-12T02:19:05Z", "asset": {"_class": "asset", "id": 3940450, "asset_type": "Video", "title": "S6L6.mp4", "created": "2015-08-17T04:40:59Z"}, "object_index": 51, "url": "/excel-for-analysts/learn/v4/t/lecture/3429302"}], "original_assessment_id": 0}]};
+
+                for (var i = 0; i < quiz.results.length; i++) {
+
+                    var question = '<font color="ff0000"><br><h3>Question-' + i + ': </h3> <b>' + quiz.results[i].prompt.question + '</b> <br>';
+
+                    for (var j = 0; j < quiz.results[i].prompt.answers.length; j++) {
+
+                        opt = opt.concat(quiz.results[i].prompt.answers[j] ? '<p style="cursor: pointer" onclick="this.style=\'font-weight: bold; color: #CE534D\'">' + n[j] + ': ' + quiz.results[i].prompt.answers[j].toString().replace(/,/g, '<br>') + '</p>' : '<br>');
+                    }
+                    var ans = quiz.results[i].correct_response ? '<p> <br> <input style="cursor: pointer" type="button" onclick="this.value=\'Answer is: ' + quiz.results[i].correct_response.toString() + '\'" value="Show Answer"></input> </p>' : '<br>';
+                    c = c.concat(question, opt, ans);
+                    opt = ''
+                    }
+                document.write(c);
+            </script>
+        </div>
+    </body>
+    </html>

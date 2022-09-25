@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>008-array-formulas</title>
+    </head>
+    <body>
+
+        <div style="background-color:#ffffaa" align = "center">
+            <script>
+                var c = '';
+                var opt = '';
+                var n = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+                var quiz = {"count": 3, "next": null, "previous": null, "results": [{"_class": "assessment", "id": 974078, "assessment_type": "multiple-choice", "created": "2016-07-02T18:17:36Z", "prompt": {"relatedLectureIds": ["3429426"], "question": "<p>How do you enter an array function in Excel?</p>", "feedbacks": ["", "", "", ""], "answers": ["<p>ENTER</p>", "<p>CTRL-ENTER</p>", "<p>CTRL-SHIFT-ENTER</p>", "<p>CTRL-ALT-ENTER</p>"]}, "correct_response": ["c"], "updated": "2016-07-02T18:17:36Z", "section": "", "question_plain": "How do you enter an array function in Excel?", "related_lectures": [{"_class": "lecture", "id": 3429426, "title": "Rules of Array Functions", "created": "2015-08-12T02:44:59Z", "asset": {"_class": "asset", "id": 3969226, "asset_type": "Video", "title": "S9L2.mp4", "created": "2015-08-21T01:05:29Z"}, "object_index": 75, "url": "/excel-for-analysts/learn/v4/t/lecture/3429426"}], "original_assessment_id": 0}, {"_class": "assessment", "id": 974080, "assessment_type": "multiple-choice", "created": "2016-07-02T18:19:48Z", "prompt": {"relatedLectureIds": ["3429428"], "question": "<p>Which of the following represents a <em>vertical </em>array constant?</p>", "feedbacks": ["", "", "", ""], "answers": ["<p>{1,2,3,4}</p>", "<p>{1,2;3,4}</p>", "<p>{1;2;3;4}</p>", "<p>{1};{2};{3};{4}</p>"]}, "correct_response": ["c"], "updated": "2016-07-02T18:19:48Z", "section": "", "question_plain": "Which of the following represents a vertical array constant?", "related_lectures": [{"_class": "lecture", "id": 3429428, "title": "Vertical, Horizontal, and 2-Dimensional Array Constants", "created": "2015-08-12T02:45:09Z", "asset": {"_class": "asset", "id": 3969240, "asset_type": "Video", "title": "S9L4.mp4", "created": "2015-08-21T01:05:51Z"}, "object_index": 77, "url": "/excel-for-analysts/learn/v4/t/lecture/3429428"}], "original_assessment_id": 0}, {"_class": "assessment", "id": 974088, "assessment_type": "multiple-choice", "created": "2016-07-02T18:22:31Z", "prompt": {"relatedLectureIds": ["3475822"], "question": "<p>TRUE or FALSE: Users can edit individual cells contained within an array function</p>", "feedbacks": ["", "Users cannot change parts of an array function, only the entire array itself"], "answers": ["<p>TRUE</p>", "<p>FALSE</p>"]}, "correct_response": ["b"], "updated": "2016-07-02T18:22:31Z", "section": "", "question_plain": "TRUE or FALSE: Users can edit individual cells contained within an array function", "related_lectures": [{"_class": "lecture", "id": 3475822, "title": "Pros & Cons of Array Functions", "created": "2015-08-20T18:42:07Z", "asset": {"_class": "asset", "id": 3969222, "asset_type": "Video", "title": "S9L3.mp4", "created": "2015-08-21T01:05:11Z"}, "object_index": 76, "url": "/excel-for-analysts/learn/v4/t/lecture/3475822"}], "original_assessment_id": 0}]};
+
+                for (var i = 0; i < quiz.results.length; i++) {
+
+                    var question = '<font color="ff0000"><br><h3>Question-' + i + ': </h3> <b>' + quiz.results[i].prompt.question + '</b> <br>';
+
+                    for (var j = 0; j < quiz.results[i].prompt.answers.length; j++) {
+
+                        opt = opt.concat(quiz.results[i].prompt.answers[j] ? '<p style="cursor: pointer" onclick="this.style=\'font-weight: bold; color: #CE534D\'">' + n[j] + ': ' + quiz.results[i].prompt.answers[j].toString().replace(/,/g, '<br>') + '</p>' : '<br>');
+                    }
+                    var ans = quiz.results[i].correct_response ? '<p> <br> <input style="cursor: pointer" type="button" onclick="this.value=\'Answer is: ' + quiz.results[i].correct_response.toString() + '\'" value="Show Answer"></input> </p>' : '<br>';
+                    c = c.concat(question, opt, ans);
+                    opt = ''
+                    }
+                document.write(c);
+            </script>
+        </div>
+    </body>
+    </html>

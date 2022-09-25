@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>003-statistical-functions</title>
+    </head>
+    <body>
+
+        <div style="background-color:#ffffaa" align = "center">
+            <script>
+                var c = '';
+                var opt = '';
+                var n = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+                var quiz = {"count": 3, "next": null, "previous": null, "results": [{"_class": "assessment", "id": 974026, "assessment_type": "multiple-choice", "created": "2016-07-02T17:07:00Z", "prompt": {"question": "<p>What is the purpose of the COUNTIFS function?</p>", "relatedLectureIds": ["3429176"], "feedbacks": ["", "", "", ""], "answers": ["<p>It counts any non-negative values within a given range</p>", "<p>It sums the number of cells within a range that meet a given condition</p>", "<p>It counts the number of cells within a range that meet a given condition</p>", "<p>It sums any non-blank cells within a given range</p>"]}, "correct_response": ["c"], "updated": "2016-07-02T17:07:00Z", "section": "", "question_plain": "What is the purpose of the COUNTIFS function?", "related_lectures": [{"_class": "lecture", "id": 3429176, "title": "COUNTIFS/SUMIFS/AVERAGEIFS", "created": "2015-08-12T01:40:46Z", "asset": {"_class": "asset", "id": 3923898, "asset_type": "Video", "title": "S4L6.mp4", "created": "2015-08-14T02:57:09Z"}, "object_index": 27, "url": "/excel-for-analysts/learn/v4/t/lecture/3429176"}], "original_assessment_id": 0}, {"_class": "assessment", "id": 974028, "assessment_type": "multiple-choice", "created": "2016-07-02T17:10:29Z", "prompt": {"question": "<p>A PERCENTRANK value of 0.25 indicates that the underlying value _____</p>", "relatedLectureIds": ["3429170"], "feedbacks": ["", "", "", ""], "answers": ["<p>Is greater than 25% of values within the given range</p>", "<p>Is greater than 75% of values within the given range</p>", "<p>Is in the top quartile of values within the given range</p>", "<p>Is a multiple of 25</p>"]}, "correct_response": ["a"], "updated": "2016-07-02T17:17:20Z", "section": "", "question_plain": "A PERCENTRANK value of 0.25 indicates that the underlying value _____", "related_lectures": [{"_class": "lecture", "id": 3429170, "title": "SMALL/LARGE & RANK/PERCENTRANK", "created": "2015-08-12T01:39:36Z", "asset": {"_class": "asset", "id": 3923908, "asset_type": "Video", "title": "S4L3.mp4", "created": "2015-08-14T02:58:23Z"}, "object_index": 24, "url": "/excel-for-analysts/learn/v4/t/lecture/3429170"}], "original_assessment_id": 0}, {"_class": "assessment", "id": 974034, "assessment_type": "multiple-choice", "created": "2016-07-02T17:12:52Z", "prompt": {"question": "<p>What value would the following function return?</p><p>=LARGE(A:A,2)</p>", "relatedLectureIds": ["3429170"], "feedbacks": ["", "", "", ""], "answers": ["<p>The top 2 values in column A</p>", "<p>The largest value in column A</p>", "<p>The second largest value in column A</p>", "<p>The largest even number in column A</p>"]}, "correct_response": ["c"], "updated": "2016-07-02T17:12:52Z", "section": "", "question_plain": "What value would the following function return?=LARGE(A:A,2)", "related_lectures": [{"_class": "lecture", "id": 3429170, "title": "SMALL/LARGE & RANK/PERCENTRANK", "created": "2015-08-12T01:39:36Z", "asset": {"_class": "asset", "id": 3923908, "asset_type": "Video", "title": "S4L3.mp4", "created": "2015-08-14T02:58:23Z"}, "object_index": 24, "url": "/excel-for-analysts/learn/v4/t/lecture/3429170"}], "original_assessment_id": 0}]};
+
+                for (var i = 0; i < quiz.results.length; i++) {
+
+                    var question = '<font color="ff0000"><br><h3>Question-' + i + ': </h3> <b>' + quiz.results[i].prompt.question + '</b> <br>';
+
+                    for (var j = 0; j < quiz.results[i].prompt.answers.length; j++) {
+
+                        opt = opt.concat(quiz.results[i].prompt.answers[j] ? '<p style="cursor: pointer" onclick="this.style=\'font-weight: bold; color: #CE534D\'">' + n[j] + ': ' + quiz.results[i].prompt.answers[j].toString().replace(/,/g, '<br>') + '</p>' : '<br>');
+                    }
+                    var ans = quiz.results[i].correct_response ? '<p> <br> <input style="cursor: pointer" type="button" onclick="this.value=\'Answer is: ' + quiz.results[i].correct_response.toString() + '\'" value="Show Answer"></input> </p>' : '<br>';
+                    c = c.concat(question, opt, ans);
+                    opt = ''
+                    }
+                document.write(c);
+            </script>
+        </div>
+    </body>
+    </html>
