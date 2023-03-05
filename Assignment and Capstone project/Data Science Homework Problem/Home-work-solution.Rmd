@@ -1,0 +1,213 @@
+---
+title: "Data Science Homework Solution"
+author: |
+  | [Ogundepo Ezekiel Adebayo](https://bit.ly/gbganalyst)
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: 
+  html_document:
+    theme: united
+    highlight: espresso
+    toc: true
+    #number_sections: true
+    toc_depth: 3
+    toc_float: true
+    keep_md: true
+    code_download: true
+    code_folding: show
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, 
+                      tidy = 'styler', 
+                      comment = NA,
+                      message = FALSE,
+                      warning = FALSE)
+```
+
+# Home work instructions
+
+To view the data science homework problem please download the file here:
+
+```{r, echo=FALSE}
+xfun::embed_file("homework.pdf")
+```
+
+## Import packages
+
+```{r R packages, include=TRUE}
+packages_needed <- c("tidyverse", "lubridate", "knitr", "kableExtra",  "htmltools", "mime")
+
+if (!require(install.load)) {
+  install.packages("install.load")
+}
+
+install.load::install_load(packages_needed)
+
+theme_set(theme_bw())
+```
+
+# Part 1
+
+**Read in `hits.csv`**
+
+You should get something that looks like this:
+
+```{r, echo=FALSE, comment= "#"}
+hits <- read_csv("hits.csv")
+
+hits
+```
+
+[Solution]{.ul}
+
+```{r}
+hits <- read_csv("hits.csv")
+
+#  data cleaning
+
+hits <-  hits %>% mutate(is_home_run = as.factor(is_home_run), bearing = fct_relevel(bearing, "center", after = 1))
+
+hits
+```
+
+# Part 2
+
+**Explore the number of hits over time**
+
+Using the game_date variable, create a visualization that shows the number of hits over time. Do you notice anything strange about the distribution? If so, what might you do to further investigate? (Actual investigation not necessary - just a quick answer will suffice).
+
+[Solution]{.ul}
+
+```{r}
+hits %>%  ggplot(aes(x = game_date, y = is_home_run))+ geom_line()+  scale_x_date()+labs(y = "Is home run", x = "Date")
+```
+
+Yes this looks strange. The reason might be the binary nature of the hit. To investigate further, I will aggregate the number of hits by month.
+
+```{r}
+hits %>% group_by(month = month(game_date, label = TRUE)) %>% summarise(total_hit = sum(as.numeric(as.character(is_home_run)))) %>%  ggplot(aes(x = month, y = total_hit, fill = month, label= total_hit))+ geom_col(show.legend = FALSE, width = 0.4) + labs(y = "Total hit", x = "Month")+ geom_text(vjust = 0, nudge_y = 0.5)
+```
+
+# Part 3
+
+**Create a univariate exploratory plot for launch speed**
+
+The continuous variable launch_speed is the speed at which the ball leaves the bat after it is hit. Provide a simple univariate exploratory visualization of this variable.
+
+[Solution]{.ul}
+
+```{r}
+hits %>% ggplot(aes(x = launch_speed)) + geom_histogram() + labs(x = "Launch speed")
+```
+
+Launch speed is highly skewed to the right and it can be seen that the majority of launch speed is between $75$ to $100$.
+
+# Part 4
+
+**Create a univariate exploratory plot for the bearing of the hit ball**
+
+The bearing of the hit ball is the direction that the ball travels with respect to the baseball field, one of either "right", "center" or "left" field. Create a summary visualization of this categorical variable.
+
+[Solution]{.ul}
+
+```{r}
+hits %>% ggplot(aes(x = bearing, fill = bearing))+ geom_bar(show.legend = FALSE, width = 0.5) + labs(x = "Bearing")
+```
+
+# Part 5
+
+**Visually compare the distribution of launch speed based on whether the hit was a "home run" or not**
+
+The variable is_home_run is 1 if the hit ball goes over the outfield wall (called a "home run"), or 0 if the hit ball does not go over the wall. Create a visualization that compares the distribution of launch speed for hits that are home runs and hits that are not.
+
+[Solution]{.ul}
+
+```{r}
+hits %>% ggplot(aes(x = is_home_run, y = launch_speed, fill = is_home_run)) + geom_boxplot(show.legend = FALSE)+ labs(x = "Is home run", y = "Launch speed")
+
+```
+
+# Part 6
+
+**Visually compare the distribution of bearing based on whether the hit was a "home run" or not**
+
+Similar to (5), create a visualization that compares the distribution of "bearing" and whether or not the hit is a home run.
+
+[Solution]{.ul}
+
+```{r}
+hits %>% count(bearing, is_home_run) %>% ggplot(aes(x= bearing, y = n, fill = is_home_run))+ geom_col(position = position_dodge())+ labs(x = "Bearing", y = "Count", fill = "Is home run")
+```
+
+# Part 7
+
+**Calculate a summary of the percentage of home runs for each batter**
+
+For each batter, denoted by the variable batter_name, calculate the percentage of home runs that they hit. Which batter has the highest home run percentage? Explain for this batter whether you would trust the computed statistic or not.
+
+[Solution]{.ul}
+
+```{r}
+hits %>% group_by(batter_name) %>% summarise(n= n(), pct_hr = sum(as.numeric(as.character(is_home_run)))/n *100)  %>% arrange(desc(pct_hr)) 
+```
+
+There is one player with $100%$ home runs, but it's based on a sample of size 1 so not a reliable statistic.
+
+# Part 8
+
+**Read in `park_dimensions.csv`**
+
+The file "park_dimensions.csv" contains information about every baseball park in American Major League Baseball, including how far away the left, center, and right field walls of the baseball park are from the batter, and the height of the walls. It is thought that augmenting our hits dataset with some of this information could give us more insight into whether a hitter will hit a home run. The data should look something like this:
+
+```{r, echo=FALSE}
+part <- read_csv("park_dimensions.csv")
+
+part
+```
+
+[Solution]{.ul}
+
+```{r}
+park <- read_csv("park_dimensions.csv")
+
+park
+```
+
+# Part 9
+
+**Pivot the park dimensions from wide format to long format**
+
+The variables LF_Dim, CF_Dim, RF_Dim provide the distance to the left field, center field, and right field walls, in feet. Create a new dataset from these variables that is pivoted from wide to long format, which should result in something that looks like this:
+
+```{r, echo=FALSE}
+include_graphics("attached.png")
+```
+
+[Solution]{.ul}
+
+```{r}
+clean_park <- park %>% pivot_longer(cols = c(LF_Dim, CF_Dim, RF_Dim), names_to = "bearing", values_to = "wall_distance") %>% mutate(bearing = case_when(bearing == "LF_Dim" ~ "left", bearing == "CF_Dim" ~"center", TRUE ~ "right")) %>% select(park, bearing, wall_distance)
+
+clean_park
+
+```
+
+# Part 10
+
+**Join the wall distance with the hits data**
+
+For each record in the hits dataset, we have the baseball park ID stored in park and the bearing of the hit ball stored in bearing. Join your results from (9) to the hits dataset using these variables so the resulting hits dataset has a new column indicating the distance to the wall for the given baseball park and bearing of each hit.
+
+[Solution]{.ul}
+
+```{r}
+hits_data <- hits %>% left_join(clean_park, by = c("bearing", "park"))
+```
+
+```{r, include=TRUE,echo=FALSE}
+kable(hits_data, caption = "Join the wall distance with the hits data", align = rep("c", 26)) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), fixed_thead = TRUE) %>%
+  scroll_box(width = "900px", height = "450px")
+```
